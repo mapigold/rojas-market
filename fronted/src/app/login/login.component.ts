@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmpleadoService } from '../service/empleado.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { MessageService, Message } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private empleadoService: EmpleadoService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -39,16 +41,32 @@ export class LoginComponent implements OnInit {
     this.empleadoService.loginEmpleado(correo_empleado, contrasena_empleado).subscribe(
       (loggedIn: boolean) => {
         if (loggedIn) {
-          // Credenciales válidas, redireccionar al dashboard y establecer estado de credenciales validadas
-          this.router.navigate(['/producto']);
-          this.authService.validarCredenciales();
+          // Credenciales válidas, mostrar toast y redireccionar al dashboard después de un retraso
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Inicio de sesión exitoso',
+            detail: 'Bienvenido/a de nuevo'
+          });
+          setTimeout(() => {
+            this.router.navigate(['/producto']);
+            this.authService.validarCredenciales();
+          }, 1000);
         } else {
           // Credenciales inválidas, mostrar mensaje de error
-          this.errorMessage = 'Credenciales inválidas. Por favor, intenta nuevamente.';
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Credenciales inválidas',
+            detail: 'Por favor, intenta nuevamente.'
+          });
         }
       },
       (error) => {
         console.log(error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error en la solicitud',
+          detail: 'Comunícate con soporte.'
+        });
       }
     );
   }

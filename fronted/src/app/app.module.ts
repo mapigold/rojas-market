@@ -26,6 +26,9 @@ import { PasswordModule } from 'primeng/password';
 import { TagModule } from 'primeng/tag';
 import { VentaComponent } from './venta/venta.component';
 import { LoginComponent } from './login/login.component';
+import { Toast } from 'primeng/toast';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { LoginComponent } from './login/login.component';
     ProductoComponent,
     VentaComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

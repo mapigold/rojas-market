@@ -1,27 +1,45 @@
 <div class="container">
-  <div class="login-form">
-    <h2 style="color: rgb(0, 0, 0); font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">INICIO DE SESION</h2>
-    <div class="image-container">
+  <div class="login-form p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-5">
       <img src="https://i.ibb.co/PwhFvMv/logo-rojas.png" alt="Logo" width="200" height="150">
-    </div>    
+      <div class="texto text-3xl font-medium mb-3">Bienvenido!</div>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
+
       <div class="form-group">
-        <label for="correo_empleado"style="color: black;">Correo Electrónico</label>
-        <input type="email" class="form-control" id="correo_empleado" formControlName="correo_empleado" required>
+
+        <label for="correo_empleado" class="block texto font-medium mb-2">Correo Electrónico</label>
+        <div class="p-inputgroup ">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+          </span>
+          <input type="email" pInputText class="form-control w-full" id="correo_empleado"
+            formControlName="correo_empleado" style="border-color: #1f2d40 !important;" required>
+        </div>
         <div *ngIf="loginForm.controls['correo_empleado'].invalid && loginForm.controls['correo_empleado'].touched"
           class="error-message">Correo electrónico es requerido.</div>
+
       </div>
+
       <div class="form-group">
-        <label for="contrasena_empleado"style="color: black;">Contraseña</label>
-        <input type="password" class="form-control" id="contrasena_empleado" formControlName="contrasena_empleado"
-          required>
+
+        <label for="contrasena_empleado" class="block texto font-medium mb-2">Contraseña</label>
+
+        <div class="p-inputgroup ">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-lock"></i>
+          </span>
+          <input type="password" pInputText class="form-control w-full" id="contrasena_empleado"
+            formControlName="contrasena_empleado" style="border-color: #1f2d40 !important;" required>
+        </div>
         <div
           *ngIf="loginForm.controls['contrasena_empleado'].invalid && loginForm.controls['contrasena_empleado'].touched"
           class="error-message">Contraseña es requerida.</div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Iniciar sesión</button>
+      <button type="submit" pButton pRipple label="Iniciar sesión" icon="pi pi-user" class="w-full p-button-success botonSesion" [disabled]="loginForm.invalid"></button>
     </form>
 
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <p-toast></p-toast>
   </div>
 </div>
