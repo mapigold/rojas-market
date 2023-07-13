@@ -16,6 +16,8 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
+
+    
     public List<Cliente> listaCliente(){
         return clienteRepository.listaCliente();
 
