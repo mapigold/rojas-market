@@ -1,0 +1,11 @@
+<header>
+  <div class="card">
+    <div class="card menu-container">
+      <ng-container *ngIf="credencialesValidadas">
+        <p-tabMenu [model]="items"></p-tabMenu>
+      </ng-container>
+    </div>
+  </div>
+</header>
+
+<router-outlet></router-outlet>

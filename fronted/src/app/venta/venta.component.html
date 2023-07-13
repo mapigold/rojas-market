@@ -1,0 +1,69 @@
+<br><br><br><br>
+<p-panel header="Ventas" [style]="{ width: '70%', margin: '0 auto' }">
+    <div style="margin-bottom: 20px">
+      <p-menubar [model]="items"></p-menubar>
+    </div>
+    <p-table
+      [value]="ventas"
+      [columns]="cols"
+      selectionMode="single"
+      dataKey="id_venta"
+      [rows]="10"
+      [paginator]="true"
+      [expandedRowKeys]="expandedRows"
+    >
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th></th>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-venta let-columns="columns">
+        <tr>
+          <td>
+            <button
+              type="button"
+              pButton
+              pRipple
+              [pRowToggler]="venta"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="isExpanded(venta) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+              (click)="toggleExpanded(venta)"
+            ></button>
+          </td>
+          <td *ngFor="let col of columns">
+            {{ getColumnValue(venta, col.field) }}
+          </td>
+        </tr>
+        <tr *ngIf="isExpanded(venta)">
+          <td [attr.colspan]="columns.length + 1">
+            <!-- Aumenta el colspan en 1 para incluir la celda del botón -->
+            <p-table
+              [value]="venta.detallesVenta"
+              [columns]="detalleCols"
+              [paginator]="false"
+              [rows]="venta.detallesVenta.length"
+            >
+              <ng-template pTemplate="header" let-columns>
+                <tr>
+                  <th *ngFor="let col of columns">
+                    {{ col.header }}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-detalleVenta let-columns="columns">
+                <tr>
+                  <td *ngFor="let col of columns">
+                    {{ getColumnValue(detalleVenta, col.field) }}
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-panel>
+  
