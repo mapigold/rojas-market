@@ -1,1 +1,52 @@
-<p>home works!</p>
+<div class="home-container">
+    <h1>Bienvenido a la pantalla de inicio</h1>
+    
+    <div class="card-container">
+      <div class="p-grid p-nogutter">
+        <div class="p-col-12 p-sm-6 p-md-4 p-lg-3">
+          <p-card class="card-item" title="Clientes" [routerLink]="'/cliente'">
+            <ng-template pTemplate="content">
+              <i class="pi pi-users card-icon"></i>
+              <p>Explora los clientes</p>
+            </ng-template>
+          </p-card>
+        </div>
+        
+        <div class="p-col-12 p-sm-6 p-md-4 p-lg-3">
+          <p-card class="card-item" title="Empleados" [routerLink]="'/empleado'">
+            <ng-template pTemplate="content">
+              <i class="pi pi-id-card card-icon"></i>
+              <p>Descubre los empleados</p>
+            </ng-template>
+          </p-card>
+        </div>
+        
+        <div class="p-col-12 p-sm-6 p-md-4 p-lg-3">
+          <p-card class="card-item" title="Productos" [routerLink]="'/producto'">
+            <ng-template pTemplate="content">
+              <i class="pi pi-box card-icon"></i>
+              <p>Explora los productos</p>
+            </ng-template>
+          </p-card>
+        </div>
+        
+        <div class="p-col-12 p-sm-6 p-md-4 p-lg-3">
+          <p-card class="card-item" title="Proveedores" [routerLink]="'/proveedor'">
+            <ng-template pTemplate="content">
+              <i class="pi pi-truck card-icon"></i>
+              <p>Descubre los proveedores</p>
+            </ng-template>
+          </p-card>
+        </div>
+        
+        <div class="p-col-12 p-sm-6 p-md-4 p-lg-3">
+          <p-card class="card-item" title="Ventas" [routerLink]="'/venta'">
+            <ng-template pTemplate="content">
+              <i class="pi pi-cart-plus card-icon"></i>
+              <p>Explora las ventas</p>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>  

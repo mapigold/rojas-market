@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
-import { EmpleadoComponent } from './empleado/empleado.component'; 
+import { EmpleadoComponent } from './empleado/empleado.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,8 +26,8 @@ import { PasswordModule } from 'primeng/password';
 import { TagModule } from 'primeng/tag';
 import { VentaComponent } from './venta/venta.component';
 import { LoginComponent } from './login/login.component';
-import { Toast } from 'primeng/toast';
 import { HomeComponent } from './home/home.component';
+import { CardModule } from 'primeng/card';
 
 
 @NgModule({
@@ -62,12 +62,13 @@ import { HomeComponent } from './home/home.component';
     ButtonModule,
     MenubarModule,
     DialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CardModule
   ],
   providers: [
     MessageService
   ],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA] // Agregar esta línea
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

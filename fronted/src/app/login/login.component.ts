@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      correo_empleado: ['', [Validators.required, Validators.email]],
-      contrasena_empleado: ['', Validators.required]
+      correo_empleado: ['nabi@gmail.com', [Validators.required, Validators.email]],
+      contrasena_empleado: ['1234', Validators.required]
     });
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
             detail: 'Bienvenido/a de nuevo'
           });
           setTimeout(() => {
-            this.router.navigate(['/producto']);
+            this.router.navigate(['/home']);
             this.authService.validarCredenciales();
           }, 1000);
         } else {
